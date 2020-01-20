@@ -15,26 +15,14 @@ def lambda_handler(event, context):
 
     response = table.put_item(
         Item= {
-            cnst.EMAIL: {
-                'S': event[cnst.EMAIL]
-            },
-            cnst.TIME_STAMP: {
-                'S': event[cnst.TIME_STAMP]
-            },
-            cnst.FIRST_NAME: {
-                'S': event[cnst.FIRST_NAME]
-            },
-            cnst.LAST_NAME: {
-                'S': event[cnst.LAST_NAME]
-            },
-            cnst.INTEREST: {
-                'S': event[cnst.INTEREST]
-            },
-            cnst.MESSAGE: {
-                'S': event[cnst.MESSAGE]
-            }
+            cnst.EMAIL: event[cnst.EMAIL],
+            cnst.TIME_STAMP: event[cnst.TIME_STAMP],
+            cnst.FIRST_NAME: event[cnst.FIRST_NAME],
+            cnst.LAST_NAME:  event[cnst.LAST_NAME],
+            cnst.INTEREST: event[cnst.INTEREST],
+            cnst.MESSAGE: event[cnst.MESSAGE]
         }
     )
     
-    return response
+    return response["ResponseMetadata"]["HTTPStatusCode"]
     
